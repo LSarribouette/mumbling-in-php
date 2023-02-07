@@ -1,6 +1,19 @@
 <?php
-$today=new \DateTime();
-$today=$today->format('Y');
+$today = new DateTime();
+$today = $today->format('Y');
+
+$db = 'sqlite:./identifier.sqlite';
+try{
+    $pdo = new PDO($db);
+} catch(Exception $e) {
+    echo "Impossible d'accéder à la base de données SQLite : ".$e->getMessage();
+    die();
+}
+$query = "SELECT id, date, driver FROM trajets";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$result = $stmt->fetchAll();
+print_r($result);
 ?>
 <!doctype html>
 <html lang="fr">
@@ -22,7 +35,12 @@ $today=$today->format('Y');
 </header>
 <main>
     <section id="home">
-
+        <div>
+            Liste des covoitureuses :
+        </div>
+<!--        foreach ($jours as $numero=>$jour) {-->
+<!--        echo '<option value="' . $numero . '">' . $jour . '</option>';-->
+<!--        }-->
     </section>
     <section id="new-driver">
         <form action="" method="POST">
@@ -38,7 +56,7 @@ $today=$today->format('Y');
     <section id="details">
         <div>
             J'ai décidé d'inverser la règle de masculinisation des noms dans ce projet, ce qui explique notamment pourquoi on peut créer "une covoitureuse" par défaut.<br>
-            <strong>Pourquoi ?</strong> Eh bien pourquoi pas, ça change un peu, non ?
+            <strong>Pourquoi ?</strong> Eh bien pourquoi pas. Ca change un peu, non ?
         </div>
     </section>
 </main>
