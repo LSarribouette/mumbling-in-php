@@ -1,0 +1,23 @@
+@font-face {
+    src: url("/fonts/Luciole-Regular.ttf");
+    font-family: "Luciole-Regular";
+}
+
+@font-face {
+    src: url("/fonts/Luciole-Bold.ttf");
+    font-family: "Luciole-Bold";
+}
+
+@font-face {
+    src: url("/fonts/Luciole-Regular-Italic.ttf");
+    font-family: "Luciole-Italic";
+}
+
+@font-face {
+    src: url("/fonts/Luciole-Bold-Italic.ttf");
+    font-family: "Luciole-Bold-Italic";
+}
+
+html {
+    font-family: Luciole-Regular, Verdana, Tahoma, sans-serif;
+}
